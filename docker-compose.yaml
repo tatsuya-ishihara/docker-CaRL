@@ -1,0 +1,25 @@
+version: "2.3"
+
+services:
+  carl:
+    build:
+      context: .
+      args:
+        - USER=${USER}
+    environment:
+      DISPLAY: ${DISPLAY}
+      XAUTHORITY: /tmp/.docker.xauth
+      XDG_RUNTIME_DIR: ${XDG_RUNTIME_DIR}
+      NVIDIA_DRIVER_CAPABILITIES: compute,graphics,utility,video,display
+      NVIDIA_VISIBLE_DEVICES: all
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth
+      - ./home:/home/${USER}
+    privileged: true
+    devices:
+      - /dev/dri
+    ipc: host
+    network_mode: host
+    tty: true
+
