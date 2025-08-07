@@ -5,7 +5,7 @@ echo "start setup CaRL"
 # setup CaRL
 cd
 git clone https://github.com/autonomousvision/CaRL.git
-cd CaRL
+cd CaRL/CARLA
 chmod +x setup_carla.sh
 ./setup_carla.sh
 conda env create --file=environment.yml
